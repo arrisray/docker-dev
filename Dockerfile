@@ -4,7 +4,7 @@ FROM debian:jessie-slim
 ARG BUILD_PACKAGES='apt-utils apt-transport-https \
     sudo git make \
     vim wget curl unzip \
-    software-properties-common'
+    supervisor'
 
 # Install packages
 # See: https://www.dajobe.org/blog/2015/04/18/making-debian-docker-images-smaller/
