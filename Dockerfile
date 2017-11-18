@@ -1,6 +1,6 @@
-FROM debian:jessie-slim
+FROM debian:stretch-slim
 
-ARG VIM_VERSION=vim74
+ARG VIM_VERSION=vim80
 
 # Args
 ARG BUILD_PACKAGES='apt-utils apt-transport-https \
