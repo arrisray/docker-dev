@@ -4,6 +4,8 @@ FROM debian:jessie-slim
 ARG BUILD_PACKAGES='apt-utils apt-transport-https \
     sudo git make \
     vim wget curl unzip \
+    gcc \
+    strace \
     supervisor'
 
 # Install packages
