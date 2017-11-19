@@ -17,7 +17,7 @@ RUN apt-get update \
         ${BUILD_PACKAGES} \
     && rm -rf /var/lib/apt/lists/* \
     && curl -fLo /usr/share/vim/${VIM_VERSION}/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 
 COPY .vimrc /usr/share/vim/vimrc
 
