@@ -1,25 +1,18 @@
 FROM debian:9
 
 ARG VIM_VERSION=vim80
+ARG BUILD_PACKAGES='apt-transport-https \
+    sudo git vim wget curl locales \
+    supervisor'
 
-# Args
-ARG BUILD_PACKAGES='apt-utils apt-transport-https \
-    sudo git make gnupg procps\
-    vim wget curl unzip \
-    gcc \
-    strace \
-    supervisor \
-    build-essential'
-
-# Install packages
-# See: https://www.dajobe.org/blog/2015/04/18/making-debian-docker-images-smaller/
-RUN apt-get update \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -y \
     && apt-get install -yq \
         ${BUILD_PACKAGES} \
     && apt-get clean \
+    # System Locale
+    && locale-gen en_US.UTF-8 \
+        && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
+    # Vim-Plug
     && curl -fLo /usr/share/vim/${VIM_VERSION}/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 
-COPY .vimrc /usr/share/vim/vimrc
-
-CMD bash
