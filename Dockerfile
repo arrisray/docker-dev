@@ -2,7 +2,7 @@ FROM debian:9
 
 ARG VIM_VERSION=vim80
 ARG BUILD_PACKAGES='apt-transport-https \
-    sudo git vim wget curl locales \
+    sudo git vim wget curl locales procps \
     supervisor'
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y \
